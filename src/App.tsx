@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const handleLogout = () => {
+    // Add real logic here
+    console.log("Logging out...");
+  };
+
+  const handleMenuItemClick = (item: { label: string; href: string }) => {
+    // Add real logic here
+    console.log("Navigating to:", item.label);
+  };
+
+  const user = {
+    name: "John Doe",
+    email: "john@example.com",
+    image: "https://ui-avatars.com/api/?name=John+Doe",
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-50">
+      <Navbar brand="Sales CRM" />
+      <Sidebar
+        onMenuItemClick={handleMenuItemClick}
+        onLogout={handleLogout}
+        user={user}
+      />
+      <main className="ml-64 py-24 px-12 pb-8 bg-gray-0 min-h-screen">
+        {/* Main content will go here */}
+      </main>
+    </div>
+  );
+};
 
-export default App
+export default App;
